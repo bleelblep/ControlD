@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ControlD - Website Blocked</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #1a1d29;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #232530;
+            padding: 20px 0;
+            border-bottom: 1px solid #2d303f;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: #4f86ed;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .block-icon {
+            width: 80px;
+            height: 80px;
+            background: #ff4757;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #8b90a0;
+            margin-bottom: 30px;
+        }
+
+        .blocked-info {
+            background: #252836;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #ff4757;
+        }
+
+        .blocked-url {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            color: #ff6b7a;
+            font-size: 1.1em;
+            word-break: break-all;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #1e212d;
+            border-radius: 6px;
+        }
+
+        .block-reason {
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .block-details {
+            color: #9ca3af;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .info-section {
+            background: #252836;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .info-title {
+            color: #ffffff;
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            color: #9ca3af;
+            margin-left: 20px;
+        }
+
+        .info-list li {
+            margin-bottom: 8px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 35px 0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            min-width: 140px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #4f86ed;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3d71d9;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #374151;
+            color: #d1d5db;
+            border: 1px solid #4b5563;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .btn-danger {
+            background: transparent;
+            color: #ff6b7a;
+            border: 1px solid #ff6b7a;
+        }
+
+        .btn-danger:hover {
+            background: #ff6b7a;
+            color: white;
+        }
+
+        .contact-info {
+            background: #1e212d;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid #374151;
+        }
+
+        .contact-title {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .contact-text {
+            color: #9ca3af;
+            font-size: 0.95em;
+        }
+
+        .footer {
+            background: #16181f;
+            padding: 20px 0;
+            border-top: 1px solid #2d303f;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #8b90a0;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+
+        .footer-links a:hover {
+            color: #4f86ed;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">🛡️</div>
+                ControlD Network Security
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="content">
+            <div class="block-icon">
+                <svg width="40" height="40" fill="white" viewBox="0 0 24 24">
+                    <path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3z"/>
+                    <path d="M12 8v4l3 2-3 2v4"/>
+                </svg>
+            </div>
+            
+            <h1>Website Blocked</h1>
+            <p class="subtitle">This content has been restricted by your network administrator</p>
+            
+            <div class="blocked-info">
+                <div class="blocked-url" id="blocked-url">test.asia</div>
+                <div class="block-reason">🔒 Blocked by Custom Rule (*.asia)</div>
+                <div class="block-details">
+                    This domain has been blocked due to network security policies. The restriction applies to all websites under the .asia top-level domain as configured by your administrator.
+                </div>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title">
+                    ℹ️ Why was this blocked?
+                </div>
+                <ul class="info-list">
+                    <li>Geographic content restrictions</li>
+                    <li>Network security policy compliance</li>
+                    <li>Bandwidth optimization</li>
+                    <li>Regulatory compliance requirements</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <div class="info-title">
+                    ⚡ What can you do?
+                </div>
+                <ul class="info-list">
+                    <li>Contact your IT administrator if you need access</li>
+                    <li>Try accessing the content from an approved network</li>
+                    <li>Look for alternative resources on approved domains</li>
+                    <li>Check if there's an official company-approved alternative</li>
+                </ul>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" onclick="goBack()">
+                    ← Go Back
+                </button>
+                <a href="mailto:it-support@yourcompany.com" class="btn btn-secondary">
+                    📧 Contact IT
+                </a>
+                <button class="btn btn-danger" onclick="reportFalsePositive()">
+                    🚩 Report Issue
+                </button>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-title">Need Help?</div>
+                <div class="contact-text">
+                    If you believe this block is in error or if you require access for business purposes, 
+                    please contact your IT administrator with the blocked URL and reason for access.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div style="color: #8b90a0; font-size: 0.9em;">
+                    Protected by ControlD Network Security
+                </div>
+                <div class="footer-links">
+                    <a href="https://controld.com/privacy">Privacy Policy</a>
+                    <a href="https://controld.com/support">Support</a>
+                    <a href="https://controld.com">About ControlD</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Get blocked URL from URL parameters or referrer
+        function getBlockedUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let blockedUrl = urlParams.get('url') || 
+                           urlParams.get('site') || 
+                           urlParams.get('domain') || 
+                           document.referrer;
+            
+            if (blockedUrl && blockedUrl !== window.location.href) {
+                // Clean up the URL for display
+                try {
+                    const url = new URL(blockedUrl);
+                    blockedUrl = url.hostname + url.pathname;
+                } catch (e) {
+                    // If it's not a valid URL, use as-is
+                }
+                document.getElementById('blocked-url').textContent = blockedUrl;
+            }
+        }
+
+        // Go back function
+        function goBack() {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.close();
+            }
+        }
+
+        // Report false positive
+        function reportFalsePositive() {
+            const blockedUrl = document.getElementById('blocked-url').textContent;
+            const subject = encodeURIComponent('False Positive Report - ' + blockedUrl);
+            const body = encodeURIComponent(`I believe the following URL was incorrectly blocked:
+
+URL: ${blockedUrl}
+Date: ${new Date().toLocaleString()}
+Reason needed: [Please describe why you need access]
+
+Please review this block for potential false positive.`);
+            
+            window.location.href = `mailto:it-support@yourcompany.com?subject=${subject}&body=${body}`;
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            getBlockedUrl();
+        });
+    </script>
+</body>
+</html>
