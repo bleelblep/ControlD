@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>⚡ Access Denied - ControlD</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0f172a; /* dark navy */
+      color: #e2e8f0; /* light gray text */
+      font-family: "Fira Code", "Courier New", monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      overflow: hidden; /* prevent scrolling */
+    }
+    #console {
+      max-width: 90%;
+      white-space: pre-line;
+      line-height: 1.6em;
+      font-size: clamp(14px, 4vw, 20px);
+    }
+    .accent {
+      color: #38bdf8; /* cyan accent */
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #38bdf8; /* match accent */
+      margin-left: 3px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div id="console"></div>
+
+  <script>
+    const lines = [
+      ">>> Initializing ControlD Firewall...",
+      "[ OK ] DNS filter engaged",
+      "[ OK ] Malware shield active",
+      "[ OK ] Packet inspector online",
+      "",
+      ">>> Incoming request detected...",
+      ">>> Target: forbidden.site.com",
+      ">>> Status: " + String.fromCharCode(9889) + " BLOCKED",
+      "",
+      "⚡ ACCESS DENIED ⚡",
+      "This page has been blocked by ControlD.",
+      "Reason: Safety / Policy Enforcement",
+      "",
+      "Tip: Stay focused. Stay safe."
+    ];
+
+    let index = 0;
+    const consoleDiv = document.getElementById("console");
+
+    function typeLine() {
+      if (index < lines.length) {
+        const line = document.createElement("div");
+        if (lines[index].includes("BLOCKED") || lines[index].includes("DENIED")) {
+          line.innerHTML = "<span class='accent'>" + lines[index] + "</span>";
+        } else {
+          line.textContent = lines[index];
+        }
+        consoleDiv.appendChild(line);
+        index++;
+        setTimeout(typeLine, 500);
+      } else {
+        const cursor = document.createElement("span");
+        cursor.className = "cursor";
+        consoleDiv.appendChild(cursor);
+      }
+    }
+
+    typeLine();
+  </script>
+</body>
+</html>
